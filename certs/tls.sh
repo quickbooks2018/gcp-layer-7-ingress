@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#Define the domain name
+# Define the domain name
 
-DOMAIN='cloudgeeks.tk'
+DOMAIN='saqlainmushtaq.com'
 SUBDOMAIN='*'
 DAYS='36500'
 default_bits='2048'
