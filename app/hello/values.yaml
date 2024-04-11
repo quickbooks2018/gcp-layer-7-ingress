@@ -45,27 +45,25 @@ service:
 
 ingress:
   enabled: true
-  className: ""
+  className: "" # Optional: Use this if specifying an IngressClass directly.
   annotations:
     # If the class annotation is not specified it defaults to "gce".
-    kubernetes.io/ingress.class: "external"
-     # Optionally, to manage HTTPS certificates automatically Use Self Signed Ceertificate:
-    networking.gke.io/managed-certificates: "self-signed-cert"
+    kubernetes.io/ingress.class: "gce"
     # Optionally, to enforce HTTPS by disabling HTTP:
-    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.allow-http: "true"
     # Load Balancer Type
     networking.gke.io/load-balancer-type: "External"
 
  
   hosts:
-    - host: chart-example.local
+    - host: app.saqlainmushtaq.com
       paths:
         - path: /
           pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+  tls:
+  - secretName: saqlainmushtaq-com-tls # this from kubectl get secrets -n default
+    hosts:
+    - app.saqlainmushtaq.com
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -91,7 +89,7 @@ readinessProbe:
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 10
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
@@ -113,3 +111,5 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# helm -n default upgrade --install hello --create-namespace -f values.yaml ./ --wait
