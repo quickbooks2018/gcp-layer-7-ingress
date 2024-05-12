@@ -44,12 +44,12 @@ gcloud compute security-policies rules create 1000 \
 ```bash
 gcloud compute security-policies rules create 1010 \
   --security-policy=my-cloud-armor-policy \
-  --src-ip-ranges=162.158.0.0/15,104.16.0.0/12,172.64.0.0/13,131.0.72.0/22,39.51.215.113/32 \
+  --src-ip-ranges=162.158.0.0/15,104.16.0.0/12,172.64.0.0/13,131.0.72.0/22 \
   --action="allow" \
   --description="Allow Cloudflare IPv4 ranges (2)"
 ```
 
--6c Allow vpn IP
+- 6c Allow vpn IP
 ```bash
 gcloud compute security-policies rules create 1020 \
   --security-policy=my-cloud-armor-policy \
@@ -58,7 +58,7 @@ gcloud compute security-policies rules create 1020 \
   --description="Allow traffic from my VPN IP"
 ```
 
--6d Deny All IP accept IP's
+- 6d Deny All IP accept IP's
 ```bash
 gcloud compute security-policies rules update 2147483647 \
     --security-policy=my-cloud-armor-policy \
