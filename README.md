@@ -70,14 +70,14 @@ gcloud compute security-policies rules update 2147483647 \
 ```bash
 gcloud compute backend-services list
 
-gcloud compute backend-services update k8s1-f607b385-default-hello-80-bc4c4a0f \
+gcloud compute backend-services update k8s1-54998642-default-hello-8080-20522725 \
   --security-policy=my-cloud-armor-policy \
   --global
 ```
 
 8. Verify the security policy is associated with the backend service
 ```bash
-gcloud compute backend-services describe k8s1-f607b385-default-hello-80-bc4c4a0f --global
+gcloud compute backend-services describe k8s1-54998642-default-hello-8080-20522725 --global
 
 gcloud compute security-policies describe my-cloud-armor-policy
 ```
