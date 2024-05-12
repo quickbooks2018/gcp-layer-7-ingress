@@ -14,7 +14,7 @@ k get secrets -n default
 
 - 3. helm install
 ```bash
-helm -n default upgrade --install hello --create-namespace -f values.yaml ./ ---wait
+helm -n default upgrade --install hello --create-namespace -f values.yaml ./ --wait
 ```
 
 - 4. See Load Balancing in GCP
