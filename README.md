@@ -39,7 +39,7 @@ gcloud compute security-policies rules create 1000 \
 ```bash
 gcloud compute security-policies rules create 1010 \
   --security-policy=my-cloud-armor-policy \
-  --src-ip-ranges=162.158.0.0/15,104.16.0.0/12,172.64.0.0/13,131.0.72.0/22 \
+  --src-ip-ranges=162.158.0.0/15,104.16.0.0/12,172.64.0.0/13,131.0.72.0/22,39.51.215.113/32 \
   --action="allow" \
   --description="Allow Cloudflare IPv4 ranges (2)"
 ```
