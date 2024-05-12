@@ -28,7 +28,7 @@ k describe ingress -n default
 gcloud config set project [PROJECT_ID]
 ```
 
-### Note: Give 5 Minutues to each network policy to take effect, it is not aws SG, it takes time to apply
+### Note: Give 5 Minutues to each network policy to take effect, it is not aws NACL, it takes time to apply
 
 ```bash
 gcloud compute security-policies create my-cloud-armor-policy --description="Policy to allow Cloudflare and specific IPs"
