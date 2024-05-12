@@ -15,6 +15,8 @@ k get secrets -n default
 - 3. helm install
 ```bash
 helm -n default upgrade --install hello --create-namespace -f values.yaml ./ --wait
+k get ingress -n default
+k describe ingress -n default
 ```
 
 - 4. See Load Balancing in GCP
