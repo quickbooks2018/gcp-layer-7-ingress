@@ -53,12 +53,21 @@ gcloud compute security-policies rules create 1010 \
 ```bash
 gcloud compute security-policies rules create 1020 \
   --security-policy=my-cloud-armor-policy \
-  --src-ip-ranges=39.36.212.107/32 \
+  --src-ip-ranges=39.51.215.113/32 \
   --action="allow" \
   --description="Allow traffic from my VPN IP"
 ```
 
-- 6d Deny All IP accept IP's
+- 6d Allow Load Balancer IP
+```bash
+gcloud compute security-policies rules create 1030 \
+  --security-policy=my-cloud-armor-policy \
+  --src-ip-ranges=34.160.92.28  \
+  --action="allow" \
+  --description="Allow traffic from Load Balancer IP"
+```
+
+- 6d Deny All IP accept IP's (Default Rule can not be deleted to updated below)
 ```bash
 gcloud compute security-policies rules update 2147483647 \
     --security-policy=my-cloud-armor-policy \
@@ -66,11 +75,24 @@ gcloud compute security-policies rules update 2147483647 \
     --description="Default rule to deny all traffic"
 ```
 
+- 6e Deny All IPs
+```bash
+gcloud compute security-policies rules create 999 \
+    --security-policy=my-cloud-armor-policy \
+    --action="deny-404" \
+    --description="Default rule to deny all traffic" \
+    --src-ip-ranges="*"  # Use * to apply to all IP addresses
+```
+
 7. Associate the security policy with the backend service
 ```bash
 gcloud compute backend-services list
 
 gcloud compute backend-services update k8s1-54998642-default-hello-8080-20522725 \
+  --security-policy=my-cloud-armor-policy \
+  --global
+
+gcloud compute backend-services update k8s1-54998642-kube-system-default-http-backend-80-ae92c5d3 \
   --security-policy=my-cloud-armor-policy \
   --global
 ```
