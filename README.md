@@ -58,6 +58,14 @@ gcloud compute security-policies rules create 1020 \
   --description="Allow traffic from my VPN IP"
 ```
 
+-6d Deny All IP accept IP's
+```bash
+gcloud compute security-policies rules update 2147483647 \
+    --security-policy=my-cloud-armor-policy \
+    --action="deny-404" \
+    --description="Default rule to deny all traffic"
+```
+
 7. Associate the security policy with the backend service
 ```bash
 gcloud compute backend-services list
