@@ -22,6 +22,11 @@ k describe ingress -n default
 - 4. See Load Balancing in GCP
 
 - 5. Ggcp Cloud Armor to allow cloudflare ip's and your own ip's
+ 
+- Set GCP default project
+```bash
+gcloud config set project [PROJECT_ID]
+```
 
 ```bash
 gcloud compute security-policies create my-cloud-armor-policy --description="Policy to allow Cloudflare and specific IPs"
